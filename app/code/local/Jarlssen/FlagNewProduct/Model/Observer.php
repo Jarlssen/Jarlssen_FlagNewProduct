@@ -59,7 +59,10 @@ class Jarlssen_FlagNewProduct_Model_Observer
     {
         $currentDate = date("Y-m-d");
 
-        if($fromDate = $_product->getNewsFromDate() || $toDate = $_product->getNewsToDate()) {
+        $fromDate = $_product->getNewsFromDate();
+        $toDate = $_product->getNewsToDate();
+
+        if($fromDate || $toDate ) {
             if( (empty($toDate) && $fromDate <= $currentDate)
              || (empty($fromDate) && $toDate >= $currentDate)
              || ($fromDate <= $currentDate && $toDate >= $currentDate)) {
